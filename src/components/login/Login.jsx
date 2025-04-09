@@ -1,30 +1,33 @@
 import {FaUser, FaLock} from "react-icons/fa"
 import { useState } from "react";
 import "./Login.css"
+import axios from "axios";
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState(""); 
+    const [userLogged, setUserLogged] = useState(false);
+    const navigate = useNavigate()
 
     const handlerSubmit = (event) => {
         event.preventDefault();
+        const user = {email, password}
         
-        async function authentica() {
-            let auth = {email, password}
-            console.log('chamando...');
-            
-            let response = await fetch("http://localhost:8080/api/v1/login", {
-                method: 'POST',
-                headers: {
-                    "Content-Type" : "application/json",
-                    "Accept" : "application/json"
-                },
-                body: JSON.stringify(auth)
-            });
-            result = await response.json();
-        }
-        authentica();
+        axios.post("http://localhost:8080/api/v1/login", user)
+            .then(resposta => {
+                console.log("Deu bom")
+                sessionStorage.setItem('token', resposta.data.accessToken)
+                navigate('/main')
+            }).catch(erro => {
+                alert(erro)
+                // if(erro?.response?.data?.message) {
+                //     alert(erro.response.data.message);
+                // } else {
+                //     alert("Deu outra merda, chama o Gui");
+                // }
+        })
     }
 
     return (
