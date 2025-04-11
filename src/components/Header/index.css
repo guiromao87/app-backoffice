@@ -1,0 +1,33 @@
+.nav__header {
+    height: 70px;
+    background-color: #DBF8DE;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 60px;
+    padding-right: 60px;
+    /* column-gap: 3rem; */
+}
+
+.logo {
+    height: 45px;
+    width: 150px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+.menu {
+    background-color: yellowgreen;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 3rem;        
+}
+/* 
+.navegacao {
+    height: 112px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3rem;
+} */
