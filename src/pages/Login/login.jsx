@@ -1,18 +1,19 @@
-import {FaUser, FaLock} from "react-icons/fa"
-import { useState } from "react";
-import "./Login.css"
 import axios from "axios";
-import {useNavigate} from 'react-router-dom'
+import { useState } from "react";
+import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import "./Login.css";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [visibilityPassword, setVisibilityPassword] = useState(false);
     const navigate = useNavigate()
 
     const handlerSubmit = (event) => {
         event.preventDefault();
-        
-        axios.post("http://localhost:8080/api/v1/login", {email, password})
+
+        axios.post("http://localhost:8080/api/v1/login", { email, password })
             .then(resposta => {
                 sessionStorage.setItem('token', resposta.data.accessToken)
                 sessionStorage.setItem('name', resposta.data.userLoggedDTO.name)
@@ -20,7 +21,7 @@ const Login = () => {
                 navigate('/home')
             }).catch(erro => {
                 alert("Email ou senha inválidos")
-        })
+            })
     }
 
     return (
@@ -33,8 +34,10 @@ const Login = () => {
                         <FaUser className="icon" />
                     </div>
                     <div className="input-field">
-                        <input type="password" placeholder="Digite seu senha" onChange={(e) => setPassword(e.target.value)} />
-                        <FaLock className="icon" />
+                        <input type={visibilityPassword ? "text" : "password"} placeholder="Digite seu senha" onChange={(e) => setPassword(e.target.value)} />
+                        <div className="icon" onClick={() => setVisibilityPassword(!visibilityPassword)}>
+                            {visibilityPassword ? <FaEye /> : <FaEyeSlash />}
+                        </div>
                     </div>
                     <button>Entrar</button>
                 </form>
