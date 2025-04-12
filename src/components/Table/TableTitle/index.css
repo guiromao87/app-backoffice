@@ -1,0 +1,7 @@
+.titleTh {
+    padding-bottom: 1rem;
+
+    &:last-child {
+        padding-left: 3rem;
+    }
+}
