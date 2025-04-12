@@ -1,0 +1,10 @@
+.iconTd {
+    display: inline;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:first-child {
+        margin-left: 4.5rem;
+    }
+}
