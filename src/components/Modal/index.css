@@ -56,7 +56,13 @@
       }
     }
 
+  .error-message {
+    color: red;
+    margin-top: 8px;
+    font-size: 0.9rem;
   }
+
+}
 
 .toggle-container {
   display: flex;
@@ -103,11 +109,11 @@
   }
 
   input:checked + .slider {
-    background-color: #8bfd7c;
+    background-color: #8d73ca;
   }
 
   input:focus + .slider {
-    box-shadow: 0 0 1px #8bfd7c;
+    box-shadow: 0 0 1px #8d73ca;
   }
     
   input:checked + .slider:before {

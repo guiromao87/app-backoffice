@@ -10,6 +10,7 @@ table {
 
 tbody tr:nth-child(even) {
   background-color: #edf5ec; 
+}
 
 .page-content {
   margin-left: 18rem; 

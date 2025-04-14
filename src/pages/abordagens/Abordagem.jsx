@@ -2,27 +2,28 @@ import { useEffect, useState } from "react";
 import { Modal } from "../../components/Modal";
 import { TableData } from "../../components/Table/TableData";
 import { TableTitle } from "../../components/Table/TableTitle";
-import { add, edit, get, remove } from "../../services/apiRequisitionsCommon";
+import { add, edit, get } from "../../services/apiRequisitionsCommon";
 import "./Abordagem.css";
 
 const Abordagem = () => {
     const [openModal, setOpenModal] = useState(false);
     const [abordagens, setAbordagens] = useState([]);
     const [abordagemEditando, setAbordagemEditando] = useState(null);
+    const [error, setError] = useState('')
 
     const fetchAbordagens = async () => {
-        const data = await get({ endpoint: '/approaches' });
-        setAbordagens(data);
+        try {
+            const data = await get({ endpoint: '/approaches' });
+            setAbordagens(data);
+            setError('');
+        } catch (error) {
+            alert(error);
+        }
     };
 
     useEffect(() => {
         fetchAbordagens();
     }, [])
-
-    const handleRemove = async (id) => { //Todo: arrumar para funcionar a mudança de status
-        await remove({ endpoint: `/approaches/${id}` });
-        setAbordagens(prev => prev.filter(item => item.id !== id));
-    }
 
     const handleEdit = (abordagem) => {
         setOpenModal(true);
@@ -30,15 +31,20 @@ const Abordagem = () => {
     }
 
     const handleSave = async (data) => {
-        if (abordagemEditando) {
-            await edit({ endpoint: `/approaches/${abordagemEditando.id}`, data: data });
-        } else {
-            await add({ endpoint: '/approaches', data: data });
-        }
+        try {
+            if (abordagemEditando) {
+                await edit({ endpoint: `/approaches/${abordagemEditando.id}`, data: data });
+            } else {
+                await add({ endpoint: '/approaches', data: data });
+            }
 
-        await fetchAbordagens();
-        setOpenModal(false);
-        setAbordagemEditando(null);
+            await fetchAbordagens();
+            setError('');
+            setOpenModal(false);
+            setAbordagemEditando(null);
+        } catch (error) {
+            setError(error);
+        }
     };
 
     return (
@@ -65,6 +71,7 @@ const Abordagem = () => {
 
             {openModal &&
                 <Modal
+                    error={error}
                     title={abordagemEditando ? "Editar abordagem" : "Adicionar abordagem"}
                     placeholder="Nome da abordagem"
                     defaultData={abordagemEditando}
