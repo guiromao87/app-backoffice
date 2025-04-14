@@ -26,10 +26,20 @@ export const Modal = ({ placeholder, title, defaultData, onSubmit, onClose }) =>
                 placeholder={placeholder}
                 onChange={(e) => setInput(e.target.value)} />
 
+            {defaultData && (
+                <div className="toggle-container">
+                    <span>Ativar:</span>
+                    <label className="switch">
+                        <input type="checkbox"/>
+                        <span className="slider round"></span>
+                    </label>
+                </div>
+            )}
+
             <div className="button-group">
                 <button type="submit">{defaultData ? "Salvar" : "Adicionar"}</button>
                 <button type="button" onClick={onClose}>Cancelar</button>
             </div>
-        </form>
+        </form >
     )
 }

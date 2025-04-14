@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #edf5ec; 
+}
