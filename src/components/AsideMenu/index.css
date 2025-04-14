@@ -1,0 +1,29 @@
+aside{
+    height: 100%;
+    position: absolute;
+
+    nav {
+        padding-top: 2rem;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        background-color: #b2cbb1;
+        height: 100%;
+        width: 15.5rem;
+    }
+    
+    .menu-link {
+        display: block;
+        padding: 1rem 0 1rem 3rem;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+    
+        &:hover {
+            background-color: #c4dfc2;
+        }
+    }
+
+    .active {
+        background-color: #DBF8DE;
+        font-weight: 600;
+    }
+}
