@@ -1,16 +1,19 @@
+import { MdEdit } from "react-icons/md";
 import './index.css';
-import { MdEdit, MdDelete } from "react-icons/md";
 
-export const TableData = ({ data, onEdit, onRemove }) => {
+export const TableData = ({ data, onEdit }) => {
     return (
         <tr>
             <td>
                 {data.name}
             </td>
 
+            <td className='statusTd'>
+                {data.active === true ? "Ativo" : "Inativo"}
+            </td>
+
             <td>
                 <MdEdit onClick={onEdit} className='iconTd'/>
-                <MdDelete onClick={onRemove} className='iconTd' />
             </td>
         </tr>
     )

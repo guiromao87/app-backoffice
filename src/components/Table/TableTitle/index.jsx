@@ -4,6 +4,7 @@ export const TableTitle = () => {
     return (
         <tr>
             <th className='titleTh'>Nomes</th>
+            <th className='titleTh'>Status</th>
             <th className='titleTh'>Ações</th>
         </tr>
     )
