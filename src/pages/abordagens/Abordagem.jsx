@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Modal } from "../../components/Modal";
 import { TableData } from "../../components/Table/TableData";
 import { TableTitle } from "../../components/Table/TableTitle";
-import { get, remove } from "../../services/apiRequisitionsCommon";
-import api from "../../services/config";
+import { add, edit, get, remove } from "../../services/apiRequisitionsCommon";
 import "./Abordagem.css";
 
 const Abordagem = () => {
@@ -20,7 +19,7 @@ const Abordagem = () => {
         fetchAbordagens();
     }, [])
 
-    const handleRemove = async (id) => {
+    const handleRemove = async (id) => { //Todo: arrumar para funcionar a mudança de status
         await remove({ endpoint: `/approaches/${id}` });
         setAbordagens(prev => prev.filter(item => item.id !== id));
     }
@@ -32,9 +31,9 @@ const Abordagem = () => {
 
     const handleSave = async (data) => {
         if (abordagemEditando) {
-            await api.put(`/approaches/${abordagemEditando.id}`, data);
+            await edit({ endpoint: `/approaches/${abordagemEditando.id}`, data: data });
         } else {
-            await api.post('/approaches', data);
+            await add({ endpoint: '/approaches', data: data });
         }
 
         await fetchAbordagens();
@@ -58,7 +57,6 @@ const Abordagem = () => {
                     {abordagens.map((abordagem) => (
                         <TableData
                             onEdit={() => handleEdit(abordagem)}
-                            onRemove={() => handleRemove(abordagem.id)}
                             key={abordagem.id}
                             data={abordagem} />
                     ))}
