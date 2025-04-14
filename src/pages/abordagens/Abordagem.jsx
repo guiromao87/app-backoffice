@@ -38,8 +38,8 @@ const Abordagem = () => {
                 await add({ endpoint: '/approaches', data: data });
             }
 
-            await fetchAbordagens();
             setError('');
+            await fetchAbordagens();
             setOpenModal(false);
             setAbordagemEditando(null);
         } catch (error) {
@@ -76,7 +76,7 @@ const Abordagem = () => {
                     placeholder="Nome da abordagem"
                     defaultData={abordagemEditando}
                     onSubmit={handleSave}
-                    onClose={() => setOpenModal(false)} />}
+                    onClose={() => {setOpenModal(false); setError('')}} />}
         </main>
     )
 }
