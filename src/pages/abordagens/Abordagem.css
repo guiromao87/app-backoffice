@@ -1,0 +1,29 @@
+#abordagem {
+    display: grid;
+    place-items: center;
+    
+    h1 {
+        margin: 0;
+        padding-right: 11.5rem;
+    }
+
+    .abordagemTitle {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 2rem 0rem 1rem 0rem;
+    }
+
+    button {
+        float: right;
+        flex: 1;
+        padding: 0.5rem;
+        font-size: 0.95rem;
+        border: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        background-color: #DBF8DE;
+        color: black;
+        margin-left: auto;
+    }
+}
