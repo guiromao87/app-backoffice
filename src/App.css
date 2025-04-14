@@ -10,4 +10,13 @@ table {
 
 tbody tr:nth-child(even) {
   background-color: #edf5ec; 
+
+.page-content {
+  margin-left: 18rem; 
+  padding-top: 2rem;
+}
+
+.app-layout {
+  position: relative;
+  min-height: 100vh;
 }
