@@ -1,6 +1,7 @@
 #abordagem {
     display: grid;
     place-items: center;
+    padding-bottom: 5rem;
     
     h1 {
         margin: 0;
