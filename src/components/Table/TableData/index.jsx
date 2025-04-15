@@ -9,7 +9,7 @@ export const TableData = ({ data, onEdit }) => {
             </td>
 
             <td className='statusTd'>
-                {data.active === true ? "Ativo" : "Inativo"}
+                {data.status === true ? "Ativo" : "Inativo"}
             </td>
 
             <td>
