@@ -1,19 +1,27 @@
-import { MdEdit } from "react-icons/md";
 import './index.css';
 
-export const TableData = ({ data, onEdit }) => {
+export const TableData = ({ data, columns, actions = [] }) => {
+    const formatValue = (col) => {
+        if( col ==="status") {
+            return data[col] ? "Ativo" : "Inativo";
+        } else if (col === "updatedAt") {
+            return new Date(data[col]).toLocaleDateString('pt-BR');
+        }
+        return data[col]
+    }
+
     return (
         <tr>
-            <td>
-                {data.name}
-            </td>
-
-            <td className='statusTd'>
-                {data.status === true ? "Ativo" : "Inativo"}
-            </td>
+            {columns.map((col, i) => (
+                <td key={i} className="td-content">
+                    {formatValue(col)}
+                </td>
+            ))}
 
             <td>
-                <MdEdit onClick={onEdit} className='iconTd'/>
+                {actions.map(({ icon: Icon, onClick }, i) => (
+                    <Icon key={i} className="iconTd" onClick={onClick} />
+                ))}
             </td>
         </tr>
     )

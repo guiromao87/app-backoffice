@@ -5,10 +5,10 @@
     cursor: pointer;
 
     &:first-child {
-        margin-left: 4.5rem;
+        margin-left: 3.4rem;
     }
 }
 
-.statusTd {
-    padding-left: 4rem;
+.td-content {
+    padding: 0.4rem 1rem;
 }
