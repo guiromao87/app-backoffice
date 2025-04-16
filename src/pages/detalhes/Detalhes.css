@@ -1,0 +1,18 @@
+#details {
+    .main-title {
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 2px solid #e56b6f;
+        padding-bottom: 1rem;
+    }
+
+    .info-group p,
+    .list-section p {
+        margin-bottom: 10px;
+    }
+
+    .list-item {
+        padding-left: 10px;
+        border-left: 2px solid #e56b6f;
+    }
+}
