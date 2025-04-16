@@ -13,11 +13,38 @@ tbody tr:nth-child(even) {
 }
 
 .page-content {
-  margin-left: 18rem; 
+  margin-left: 14rem; 
   padding-top: 2rem;
+  max-width: 100vw;
+  display: grid;
+  place-items: center;
 }
 
 .app-layout {
   position: relative;
   min-height: 100vh;
+}
+
+.main {
+  padding-bottom: 5rem;
+
+  .main-title {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 0rem 0rem 1rem 0;
+  }
+
+  #add-content {
+      float: right;
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      background-color: #DBF8DE;
+      color: black;
+      margin-left: 11.5rem;
+  }
 }
