@@ -1,11 +1,9 @@
 import './index.css';
 
-export const TableTitle = () => {
+export const TableTitle = ({ columns }) => {
     return (
         <tr>
-            <th className='titleTh'>Nomes</th>
-            <th className='titleTh'>Status</th>
-            <th className='titleTh'>Ações</th>
+            {columns.map((col, i) => <th key={i} className='titleTh'>{col}</th>)}
         </tr>
     )
 }

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import './index.css';
+import { Toggle } from "./Toggle";
 
-export const Modal = ({ placeholder, title, defaultData, onSubmit, onClose, error }) => {
+export const Modal = ({ placeholder, title, defaultData, onSubmit, onClose, error, showInput = true, showToggle = false }) => {
     const [input, setInput] = useState("");
     const [status, setStatus] = useState(true);
 
@@ -23,21 +24,18 @@ export const Modal = ({ placeholder, title, defaultData, onSubmit, onClose, erro
     return (
         <form onSubmit={handleSubmit} id="modal">
             <h3>{title}</h3>
-            <input
-                required
-                value={input}
-                type="text"
-                placeholder={placeholder}
-                onChange={(e) => setInput(e.target.value)} />
 
-            {defaultData && (
-                <div className="toggle-container">
-                    <span>Ativar:</span>
-                    <label className="switch">
-                        <input type="checkbox" checked={status} onChange={(e) => setStatus(e.target.checked)} />
-                        <span className="slider round"></span>
-                    </label>
-                </div>
+            {showInput && (
+                <input
+                    required
+                    value={input}
+                    type="text"
+                    placeholder={placeholder}
+                    onChange={(e) => setInput(e.target.value)} />
+            )}
+
+            {(defaultData || showToggle) && (
+                <Toggle setStatus={setStatus} status={status} />
             )}
 
             {error && <p className="error-message">{error}</p>}
