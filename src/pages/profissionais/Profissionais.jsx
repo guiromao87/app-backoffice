@@ -73,7 +73,7 @@ const Profissionais = () => {
                 <tbody>
                     {profissionais?.content?.map((profissional) => (
                         <TableData
-                            columns={["name", "crp", "email", "status", "updatedAt"]}
+                            columns={["name", "crp", "email", "status", "createdAt"]}
                             actions={[
                                 { icon: FaSearch, onClick: () => handleDetails(profissional.id) },
                                 { icon: MdEdit, onClick: () => handleEdit(profissional) }

@@ -4,7 +4,7 @@ export const TableData = ({ data, columns, actions = [] }) => {
     const formatValue = (col) => {
         if( col ==="status") {
             return data[col] ? "Ativo" : "Inativo";
-        } else if (col === "updatedAt") {
+        } else if (col === "createdAt") {
             return new Date(data[col]).toLocaleDateString('pt-BR');
         }
         return data[col]
