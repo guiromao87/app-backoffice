@@ -1,8 +1,9 @@
-import axios from "axios";
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import api from "../../services/config";
 import "./Login.css";
+
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -13,11 +14,12 @@ const Login = () => {
     const handlerSubmit = (event) => {
         event.preventDefault();
 
-        axios.post("http://localhost:8080/api/v1/login", { email, password })
+        api.post("/login", { email, password })
             .then(resposta => {
                 sessionStorage.setItem('token', resposta.data.accessToken)
                 sessionStorage.setItem('name', resposta.data.userLoggedDTO.name)
                 sessionStorage.setItem('email', resposta.data.userLoggedDTO.email)
+                sessionStorage.setItem('refresh', resposta.data.refreshToken)
                 navigate('/home')
             }).catch(erro => {
                 alert("Email ou senha inválidos")

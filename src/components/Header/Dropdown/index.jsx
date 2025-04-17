@@ -2,11 +2,14 @@ import { FiLogOut } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 import { NavLink, useNavigate } from 'react-router-dom';
 import './index.css';
+import api from "../../../services/config";
 
 export const Dropdown = () => {
     const navigate = useNavigate();
     const handleLogout = async () => {
-        // await api.post({ endpoint: '/logout?refreshToken=' }); //TODO: preciso arrumar o refresh token para enviar ele
+        const refresh = sessionStorage.getItem('refresh')
+
+        await api.post(`/logout?refreshToken=${refresh}`);
         sessionStorage.clear();
         navigate('/');
     }
