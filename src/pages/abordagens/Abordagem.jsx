@@ -3,7 +3,7 @@ import { Modal } from "../../components/Modal";
 import { TableData } from "../../components/Table/TableData";
 import { TableTitle } from "../../components/Table/TableTitle";
 import { add, edit, get } from "../../services/apiRequisitionsCommon";
-import "./Abordagem.css";
+import { MdEdit } from "react-icons/md";
 
 const Abordagem = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -48,21 +48,24 @@ const Abordagem = () => {
     };
 
     return (
-        <main id="abordagem">
-            <div className="abordagemTitle">
+        <main className="main">
+            <div className="main-title">
                 <h1>Abordagem</h1>
-                <button onClick={() => {
+                <button id="add-content" onClick={() => {
                     setOpenModal(true);
                     setAbordagemEditando(null);
                 }}>Adicionar</button>
             </div>
 
             <table>
-                <TableTitle />
+                <TableTitle columns={["Nome", "Status", "Ações"]} />
                 <tbody>
                     {abordagens.map((abordagem) => (
                         <TableData
-                            onEdit={() => handleEdit(abordagem)}
+                            columns={["name", "status"]}
+                            actions={[
+                                { icon: MdEdit, onClick: () => handleEdit(abordagem) }
+                            ]}
                             key={abordagem.id}
                             data={abordagem} />
                     ))}
@@ -76,7 +79,7 @@ const Abordagem = () => {
                     placeholder="Nome da abordagem"
                     defaultData={abordagemEditando}
                     onSubmit={handleSave}
-                    onClose={() => {setOpenModal(false); setError('')}} />}
+                    onClose={() => { setOpenModal(false); setError('') }} />}
         </main>
     )
 }
