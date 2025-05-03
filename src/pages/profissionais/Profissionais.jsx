@@ -69,11 +69,11 @@ const Profissionais = () => {
             <h4>Total: {profissionais.totalElements}</h4>
 
             <table>
-                <TableTitle columns={["Nome", "CRP", "Email", "Status", "Data de criação", "Ações"]} />
+                <TableTitle columns={["Nome", "CRP", "Email", "Status", "Admin", "Data de criação", "Ações"]} />
                 <tbody>
                     {profissionais?.content?.map((profissional) => (
                         <TableData
-                            columns={["name", "crp", "email", "status", "createdAt"]}
+                            columns={["name", "crp", "email", "status", "admin", "createdAt"]}
                             actions={[
                                 { icon: FaSearch, onClick: () => handleDetails(profissional.id) },
                                 { icon: MdEdit, onClick: () => handleEdit(profissional) }

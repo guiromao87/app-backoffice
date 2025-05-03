@@ -2,9 +2,13 @@ import './index.css';
 
 export const TableData = ({ data, columns, actions = [] }) => {
     const formatValue = (col) => {
-        if( col ==="status") {
+        if (col === "status") {
             return data[col] ? "Ativo" : "Inativo";
-        } else if (col === "createdAt") {
+        }
+        else if (col === "admin") {
+            return data[col] ? "Sim" : "Não";
+        }
+        else if (col === "createdAt") {
             return new Date(data[col]).toLocaleDateString('pt-BR');
         }
         return data[col]
