@@ -1,9 +1,9 @@
-export const Toggle = ({status, setStatus}) => {
+export const Toggle = ({text, toggle, setToggle}) => {
     return (
         <div className="toggle-container">
-            <span>Ativar:</span>
+            <span>{text}</span>
             <label className="switch">
-                <input type="checkbox" checked={status} onChange={(e) => setStatus(e.target.checked)} />
+                <input type="checkbox" checked={!!toggle} onChange={(e) => setToggle(e.target.checked)} />
                 <span className="slider round"></span>
             </label>
         </div>
