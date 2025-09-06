@@ -1,51 +1,60 @@
-import { useState } from "react";
-import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
+import { useState } from 'react';
+import { FaEye, FaEyeSlash, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import api from "../../services/config";
-import "./Login.css";
-
+import api from '../../services/config';
+import './Login.css';
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [visibilityPassword, setVisibilityPassword] = useState(false);
-    const navigate = useNavigate()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [visibilityPassword, setVisibilityPassword] = useState(false);
+  const navigate = useNavigate();
 
-    const handlerSubmit = (event) => {
-        event.preventDefault();
+  const handlerSubmit = (event) => {
+    event.preventDefault();
 
-        api.post("/login", { email, password })
-            .then(resposta => {
-                sessionStorage.setItem('token', resposta.data.accessToken)
-                sessionStorage.setItem('name', resposta.data.userLoggedDTO.name)
-                sessionStorage.setItem('email', resposta.data.userLoggedDTO.email)
-                sessionStorage.setItem('refresh', resposta.data.refreshToken)
-                navigate('/home')
-            }).catch(erro => {
-                alert("Email ou senha inválidos")
-            })
-    }
+    api
+      .post('/login', { email, senha: password })
+      .then((resposta) => {
+        sessionStorage.setItem('token', resposta.data.accessToken);
+        sessionStorage.setItem('name', resposta.data.userLoggedDTO.name);
+        sessionStorage.setItem('email', resposta.data.userLoggedDTO.email);
+        sessionStorage.setItem('refresh', resposta.data.refreshToken);
+        navigate('/home');
+      })
+      .catch((erro) => {
+        alert('Email ou senha inválidos');
+      });
+  };
 
-    return (
-        <div className="teste">
-            <div className="container">
-                <form onSubmit={handlerSubmit}>
-                    <h1>Cloud4Care Backoffice</h1>
-                    <div className="input-field">
-                        <input type="text" placeholder="Digite seu email" onChange={(e) => setEmail(e.target.value)} />
-                        <FaUser className="icon" />
-                    </div>
-                    <div className="input-field">
-                        <input type={visibilityPassword ? "text" : "password"} placeholder="Digite seu senha" onChange={(e) => setPassword(e.target.value)} />
-                        <div className="icon" onClick={() => setVisibilityPassword(!visibilityPassword)}>
-                            {visibilityPassword ? <FaEye /> : <FaEyeSlash />}
-                        </div>
-                    </div>
-                    <button>Entrar</button>
-                </form>
+  return (
+    <div className="teste">
+      <div className="container">
+        <form onSubmit={handlerSubmit}>
+          <h1>Cloud4Care Backoffice</h1>
+          <div className="input-field">
+            <input
+              type="text"
+              placeholder="Digite seu email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <FaUser className="icon" />
+          </div>
+          <div className="input-field">
+            <input
+              type={visibilityPassword ? 'text' : 'password'}
+              placeholder="Digite seu senha"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className="icon" onClick={() => setVisibilityPassword(!visibilityPassword)}>
+              {visibilityPassword ? <FaEye /> : <FaEyeSlash />}
             </div>
-        </div>
-    )
-}
+          </div>
+          <button>Entrar</button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-export default Login
+export default Login;
