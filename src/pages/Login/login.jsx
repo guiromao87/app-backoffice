@@ -16,10 +16,8 @@ const Login = () => {
     api
       .post('/login', { email, senha: password })
       .then((resposta) => {
-        sessionStorage.setItem('token', resposta.data.accessToken);
-        sessionStorage.setItem('name', resposta.data.userLoggedDTO.name);
-        sessionStorage.setItem('email', resposta.data.userLoggedDTO.email);
-        sessionStorage.setItem('refresh', resposta.data.refreshToken);
+        sessionStorage.setItem('token', resposta.data.token);
+        sessionStorage.setItem('tipo', resposta.data.tipo);
         navigate('/home');
       })
       .catch((erro) => {
