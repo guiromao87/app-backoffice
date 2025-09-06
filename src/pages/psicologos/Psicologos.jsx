@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import { Modal } from '../../components/Modal';
 import { TableData } from '../../components/Table/TableData';
 import { TableTitle } from '../../components/Table/TableTitle';
 import { edit, get } from '../../services/apiRequisitionsCommon';
-import { FaSearch } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import { Pagination } from '../../components/Pagination';
 
 const Psicologos = () => {
   const [openModal, setOpenModal] = useState(false);
   const [profissionais, setProfissionais] = useState({});
   const [profissionaisEditando, setProfissionaisEditando] = useState(null);
   const [error, setError] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
-  const fetchProfissionais = async (page) => {
+  const fetchProfissionais = async () => {
     try {
       const data = await get({ endpoint: `/psicologos` });
       setProfissionais(data);
@@ -27,8 +26,8 @@ const Psicologos = () => {
   };
 
   useEffect(() => {
-    fetchProfissionais(currentPage - 1);
-  }, [currentPage]);
+    fetchProfissionais();
+  }, []);
 
   const handleEdit = (profissionais) => {
     setOpenModal(true);
@@ -57,25 +56,23 @@ const Psicologos = () => {
     }
   };
 
-  const handlePageClick = (e) => {
-    setCurrentPage(e.selected + 1);
-  };
+  // const handlePageClick = (e) => {
+  //   setCurrentPage(e.selected + 1);
+  // };
 
   return (
     <main className="main">
       <div className="main-title">
         <h1>Psicólogos</h1>
       </div>
-      <h4>Total: {profissionais.totalElements}</h4>
+      <h4>Total: {profissionais.length}</h4>
 
       <table>
-        <TableTitle
-          columns={['Nome', 'CRP', 'Email', 'Status', 'Admin', 'Data de criação', 'Ações']}
-        />
+        <TableTitle columns={['Nome', 'CRP', 'Email', 'Status']} />
         <tbody>
           {profissionais?.content?.map((profissional) => (
             <TableData
-              columns={['nome', 'crp', 'email', 'ativo', 'admin', 'dataCriacao']}
+              columns={['nome', 'crp', 'email', 'ativo']}
               actions={[
                 { icon: FaSearch, onClick: () => handleDetails(profissional.id) },
                 { icon: MdEdit, onClick: () => handleEdit(profissional) },
@@ -87,11 +84,11 @@ const Psicologos = () => {
         </tbody>
       </table>
 
-      <Pagination
+      {/* <Pagination
         currentPage={currentPage}
         pageCount={profissionais?.totalPages}
         onPageChange={handlePageClick}
-      />
+      /> */}
 
       {openModal && (
         <Modal
