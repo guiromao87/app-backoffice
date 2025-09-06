@@ -9,7 +9,7 @@ import { edit, get } from '../../services/apiRequisitionsCommon';
 
 const Psicologos = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [profissionais, setProfissionais] = useState({});
+  const [profissionais, setProfissionais] = useState([]);
   const [profissionaisEditando, setProfissionaisEditando] = useState(null);
   const [error, setError] = useState('');
   // const [currentPage, setCurrentPage] = useState(1);
@@ -68,11 +68,11 @@ const Psicologos = () => {
       <h4>Total: {profissionais.length}</h4>
 
       <table>
-        <TableTitle columns={['Nome', 'CRP', 'Email', 'Status']} />
+        <TableTitle columns={['ID', 'Nome', 'CRP', 'Email', 'Status', 'Ações']} />
         <tbody>
-          {profissionais?.content?.map((profissional) => (
+          {profissionais.map((profissional) => (
             <TableData
-              columns={['nome', 'crp', 'email', 'ativo']}
+              columns={['id', 'nome', 'crp', 'email', 'ativo']}
               actions={[
                 { icon: FaSearch, onClick: () => handleDetails(profissional.id) },
                 { icon: MdEdit, onClick: () => handleEdit(profissional) },
