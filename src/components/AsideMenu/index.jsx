@@ -1,23 +1,28 @@
 import { NavLink } from 'react-router-dom';
-import "./index.css";
+import './index.css';
 
 export const AsideMenu = () => {
-    return (
-        <aside>
-            <nav aria-label="Menu lateral">
-                <NavLink reloadDocument to="/abordagens" className={({ isActive }) => isActive ? "menu-link active" : "menu-link"}>
-                    Abordagens
-                </NavLink>
-                <NavLink reloadDocument to="/especialidades" className={({ isActive }) => isActive ? "menu-link active" : "menu-link"}>
-                    Especialidades
-                </NavLink>
-                <NavLink reloadDocument to="/profissionais" className={({ isActive }) => isActive ? "menu-link active" : "menu-link"}>
-                    Profissionais
-                </NavLink>
-                <NavLink reloadDocument to="/materiais" className={({ isActive }) => isActive ? "menu-link active" : "menu-link"}>
-                    Materiais
-                </NavLink>
-            </nav>
-        </aside>
-    )
-}
+  const links = [
+    { to: '/abordagens', label: 'Abordagens' },
+    { to: '/especialidades', label: 'Especialidades' },
+    { to: '/psicologos', label: 'Psicólogos' },
+    { to: '/assistentes', label: 'Assistentes' },
+    { to: '/materiais', label: 'Materiais' },
+  ];
+  return (
+    <aside>
+      <nav aria-label="Menu lateral">
+        {links.map(({ to, label }) => (
+          <NavLink
+            key={to}
+            reloadDocument
+            to={to}
+            className={({ isActive }) => (isActive ? 'menu-link active' : 'menu-link')}
+          >
+            {label}
+          </NavLink>
+        ))}
+      </nav>
+    </aside>
+  );
+};

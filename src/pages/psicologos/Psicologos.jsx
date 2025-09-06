@@ -8,7 +8,7 @@ import { FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
 
-const Profissionais = () => {
+const Psicologos = () => {
   const [openModal, setOpenModal] = useState(false);
   const [profissionais, setProfissionais] = useState({});
   const [profissionaisEditando, setProfissionaisEditando] = useState(null);
@@ -101,6 +101,7 @@ const Profissionais = () => {
           placeholder="Nome da Profissionais"
           defaultData={profissionaisEditando}
           onSubmit={handleSave}
+          showAdminToggle={true}
           onClose={() => {
             setOpenModal(false);
             setError('');
@@ -111,4 +112,4 @@ const Profissionais = () => {
   );
 };
 
-export default Profissionais;
+export default Psicologos;
