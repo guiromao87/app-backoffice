@@ -64,7 +64,7 @@ const Profissionais = () => {
   return (
     <main className="main">
       <div className="main-title">
-        <h1>Profissionais</h1>
+        <h1>Psicólogos</h1>
       </div>
       <h4>Total: {profissionais.totalElements}</h4>
 
@@ -75,7 +75,7 @@ const Profissionais = () => {
         <tbody>
           {profissionais?.content?.map((profissional) => (
             <TableData
-              columns={['nome', 'crp', 'email', 'ativo', 'admin', 'createdAt']}
+              columns={['nome', 'crp', 'email', 'ativo', 'admin', 'dataCriacao']}
               actions={[
                 { icon: FaSearch, onClick: () => handleDetails(profissional.id) },
                 { icon: MdEdit, onClick: () => handleEdit(profissional) },

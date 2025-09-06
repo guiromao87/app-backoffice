@@ -6,7 +6,7 @@ export const TableData = ({ data, columns, actions = [] }) => {
       return data[col] ? 'Ativo' : 'Inativo';
     } else if (col === 'admin') {
       return data[col] ? 'Sim' : 'Não';
-    } else if (col === 'createdAt') {
+    } else if (col === 'dataCriacao') {
       return new Date(data[col]).toLocaleDateString('pt-BR');
     }
     return data[col];
