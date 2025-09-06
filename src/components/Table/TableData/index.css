@@ -1,14 +1,21 @@
 .iconTd {
-    display: inline;
-    margin-right: 1rem;
-    font-size: 1.2rem;
-    cursor: pointer;
+  display: inline;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
 
-    &:first-child {
-        margin-left: 3.4rem;
-    }
+  &:first-child {
+    margin-left: 3.4rem;
+  }
 }
 
 .td-content {
-    padding: 0.4rem 1rem;
+  padding: 0.4rem 1rem;
+}
+
+td {
+  max-width: 30rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
