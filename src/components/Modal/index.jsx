@@ -11,6 +11,7 @@ export const Modal = ({
   error,
   showInput = true,
   showToggle = false,
+  showAdminToggle = false,
 }) => {
   const [input, setInput] = useState('');
   const [ativo, setAtivo] = useState(true);
@@ -50,7 +51,7 @@ export const Modal = ({
       {(defaultData || showToggle) && (
         <>
           <Toggle text="Ativar:" setToggle={setAtivo} toggle={ativo} />
-          <Toggle text="Admin:" setToggle={setIsAdmin} toggle={isAdmin} />
+          {showAdminToggle && <Toggle text="Admin:" setToggle={setIsAdmin} toggle={isAdmin} />}
         </>
       )}
 
