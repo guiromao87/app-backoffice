@@ -36,7 +36,7 @@ const Psicologos = () => {
 
   const handleSave = async (data) => {
     try {
-      await edit({ endpoint: `/psicologos/${profissionaisEditando.id}/status`, data: data });
+      await edit({ endpoint: `/psicologos/${profissionaisEditando.id}`, data: data });
       setError('');
       await fetchProfissionais();
       setOpenModal(false);
@@ -50,7 +50,7 @@ const Psicologos = () => {
     try {
       const response = await get({ endpoint: `/psicologos/${id}` });
       localStorage.setItem('details', JSON.stringify(response));
-      navigate('/detalhes-profissional');
+      navigate('/detalhes-psicologo');
     } catch (error) {
       setError(error);
     }

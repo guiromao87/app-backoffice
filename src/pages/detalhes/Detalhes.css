@@ -1,18 +1,24 @@
 #details {
-    .main-title {
-        margin-bottom: 25px;
-        text-align: center;
-        border-bottom: 2px solid #e56b6f;
-        padding-bottom: 1rem;
-    }
+  .main-title {
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #e56b6f;
+    padding-bottom: 1rem;
+  }
 
-    .info-group p,
-    .list-section p {
-        margin-bottom: 10px;
-    }
+  .info-group p,
+  .list-section p {
+    margin-bottom: 10px;
+  }
 
-    .list-item {
-        padding-left: 10px;
-        border-left: 2px solid #e56b6f;
-    }
+  #add-content {
+    left: 14rem;
+    position: absolute;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .list-item {
+    padding-left: 10px;
+    border-left: 2px solid #e56b6f;
+  }
 }
