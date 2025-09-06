@@ -1,22 +1,16 @@
-import api from '../../services/config';
-import { useEffect, useState } from 'react';
+import { CrudPage } from '../../components/CrudPage';
 
 const Especialidade = () => {
-  const [especialidades, setEspecialidades] = useState([]);
-
-  useEffect(() => {
-    api.get('/especialidades').then((resposta) => setEspecialidades(resposta.data));
-  }, []);
-
   return (
-    <div>
-      <h1>Especialidades</h1>
-      <ul>
-        {especialidades.map((especialidade) => (
-          <li>{especialidade.nome}</li>
-        ))}
-      </ul>
-    </div>
+    <CrudPage
+      titlePage="Especialidade"
+      endpoint="/especialidades"
+      columns={[
+        { key: 'nome', label: 'Nome' },
+        { key: 'ativo', label: 'Status' },
+      ]}
+      placeholder="Nome da especialidade"
+    />
   );
 };
 
