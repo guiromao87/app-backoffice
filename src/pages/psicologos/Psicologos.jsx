@@ -6,18 +6,19 @@ import { Modal } from '../../components/Modal';
 import { TableData } from '../../components/Table/TableData';
 import { TableTitle } from '../../components/Table/TableTitle';
 import { edit, get } from '../../services/apiRequisitionsCommon';
+import { Pagination } from "../../components/Pagination";
 
 const Psicologos = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [profissionais, setProfissionais] = useState([]);
+  const [profissionais, setProfissionais] = useState({});
   const [profissionaisEditando, setProfissionaisEditando] = useState(null);
   const [error, setError] = useState('');
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
-  const fetchProfissionais = async () => {
+  const fetchProfissionais = async (page) => {
     try {
-      const data = await get({ endpoint: `/psicologos` });
+      const data = await get({endpoint: `/psicologos?page=${page}` });
       setProfissionais(data);
       setError('');
     } catch (error) {
@@ -26,8 +27,8 @@ const Psicologos = () => {
   };
 
   useEffect(() => {
-    fetchProfissionais();
-  }, []);
+    fetchProfissionais(currentPage - 1);
+  }, [currentPage]);
 
   const handleEdit = (profissionais) => {
     setOpenModal(true);
@@ -56,21 +57,21 @@ const Psicologos = () => {
     }
   };
 
-  // const handlePageClick = (e) => {
-  //   setCurrentPage(e.selected + 1);
-  // };
+  const handlePageClick = (e) => {
+    setCurrentPage(e.selected + 1);
+  };
 
   return (
     <main className="main">
       <div className="main-title">
         <h1>Psicólogos</h1>
       </div>
-      <h4>Total: {profissionais.length}</h4>
+      <h4>Total: {profissionais.totalElements}</h4>
 
       <table>
         <TableTitle columns={['ID', 'Nome', 'CRP', 'Email', 'Status', 'Ações']} />
         <tbody>
-          {profissionais.map((profissional) => (
+          {profissionais?.content?.map((profissional) => (
             <TableData
               columns={['id', 'nome', 'crp', 'email', 'ativo']}
               actions={[
@@ -84,11 +85,11 @@ const Psicologos = () => {
         </tbody>
       </table>
 
-      {/* <Pagination
+      <Pagination
         currentPage={currentPage}
         pageCount={profissionais?.totalPages}
         onPageChange={handlePageClick}
-      /> */}
+      />
 
       {openModal && (
         <Modal
