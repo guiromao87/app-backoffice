@@ -28,6 +28,7 @@ export const Detalhes = () => {
             </div>
 
             <section className="info-group">
+                <p><strong>Id:</strong> {details.id || "Vazio"}</p>
                 <p><strong>Nome:</strong> {details.nome || "Vazio"}</p>
                 <p><strong>CRP:</strong> {details.crp || "Vazio"}</p>
                 <p><strong>Email:</strong> {details.email || "Vazio"}</p>

@@ -69,11 +69,11 @@ const Psicologos = () => {
       <h4>Total: {profissionais.totalElements}</h4>
 
       <table>
-        <TableTitle columns={['ID', 'Nome', 'CRP', 'Email', 'Status', 'Ações']} />
+        <TableTitle columns={[ 'Nome', 'CRP', 'Email', 'Status', 'Ações']} />
         <tbody>
           {profissionais?.content?.map((profissional) => (
             <TableData
-              columns={['id', 'nome', 'crp', 'email', 'ativo']}
+              columns={[ 'nome', 'crp', 'email', 'ativo']}
               actions={[
                 { icon: FaSearch, onClick: () => handleDetails(profissional.id) },
                 { icon: MdEdit, onClick: () => handleEdit(profissional) },
