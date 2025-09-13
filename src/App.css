@@ -10,8 +10,11 @@ table {
 }
 
 .td-comment {
-  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
   max-width: 18rem;
+  text-align: center;
 }
 
 tbody tr:nth-child(even) {
