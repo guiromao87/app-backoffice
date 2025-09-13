@@ -15,7 +15,7 @@ export const TableData = ({ data, columns, actions = [] }) => {
         ROLE_PACIENTE: "Paciente",
         ROLE_ASSISTENTE: "Assistente"
       };
-      return roleMap[data[col]];
+      return roleMap[data[col]] || data[col];
     }
     return data[col];
   };
