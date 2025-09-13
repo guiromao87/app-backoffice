@@ -1,13 +1,14 @@
-import { NavLink } from 'react-router-dom';
-import './index.css';
+import { NavLink } from "react-router-dom";
+import "./index.css";
 
 export const AsideMenu = () => {
   const links = [
-    { to: '/abordagens', label: 'Abordagens' },
-    { to: '/especialidades', label: 'Especialidades' },
-    { to: '/psicologos', label: 'Psicólogos' },
-    { to: '/assistentes', label: 'Assistentes' },
-    { to: '/materiais', label: 'Materiais' },
+    { to: "/abordagens", label: "Abordagens" },
+    { to: "/especialidades", label: "Especialidades" },
+    { to: "/psicologos", label: "Psicólogos" },
+    { to: "/assistentes", label: "Assistentes" },
+    { to: "/materiais", label: "Materiais" },
+    { to: "/avaliacoes", label: "Avaliações" },
   ];
   return (
     <aside>
@@ -17,7 +18,9 @@ export const AsideMenu = () => {
             key={to}
             reloadDocument
             to={to}
-            className={({ isActive }) => (isActive ? 'menu-link active' : 'menu-link')}
+            className={({ isActive }) =>
+              isActive ? "menu-link active" : "menu-link"
+            }
           >
             {label}
           </NavLink>

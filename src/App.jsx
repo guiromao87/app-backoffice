@@ -7,6 +7,7 @@ import Especialidade from './pages/especialidades/Especialidade';
 import { PrivateRoute } from './routes/PrivateRoute';
 import { Detalhes } from './pages/detalhes/Detalhes';
 import Psicologos from './pages/psicologos/Psicologos';
+import Avaliacoes from './pages/avaliacoes/Avaliacoes';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="detalhes-psicologo" element={<PrivateRoute Component={Detalhes} />} />
         <Route path="abordagens" element={<PrivateRoute Component={Abordagem} />} />
         <Route path="especialidades" element={<PrivateRoute Component={Especialidade} />} />
+        <Route path="avaliacoes" element={<PrivateRoute Component={Avaliacoes} />} />
       </Routes>
     </BrowserRouter>
   );
