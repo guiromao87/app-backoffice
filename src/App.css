@@ -14,7 +14,7 @@ table {
   white-space: normal;
   word-break: break-word;
   overflow-wrap: anywhere;
-  max-width: 40%;
+  max-width: 30rem;
 }
 
 tbody tr:nth-child(even) {
