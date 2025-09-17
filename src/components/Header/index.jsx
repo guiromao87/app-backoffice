@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FaCaretDown, FaCaretLeft } from "react-icons/fa";
+import { FaCaretDown, FaCaretRight } from "react-icons/fa";
 import { Dropdown } from "./Dropdown";
 import './index.css';
 
@@ -33,8 +33,7 @@ const Header = () => {
                     className={`user__logged ${openDropdown ? 'active' : ''}`}>
 
                     <p>{name}</p>
-                    {openDropdown ? <FaCaretDown /> : <FaCaretLeft />}
-                    <img src="./assets/avatar.png" alt="avatar icone" className="avatar-header" />
+                    {openDropdown ? <FaCaretDown /> : <FaCaretRight />}
                 </div>
 
                 {openDropdown && <Dropdown ref={dropdownRef} />}
