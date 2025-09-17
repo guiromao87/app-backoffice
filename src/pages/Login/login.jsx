@@ -17,7 +17,7 @@ const Login = () => {
       .post('/login', { email, senha: password })
       .then((resposta) => {
         sessionStorage.setItem('token', resposta.data.token);
-        sessionStorage.setItem('tipo', resposta.data.tipo);
+        sessionStorage.setItem('name', resposta.data.nome);
         navigate('/home');
       })
       .catch((erro) => {
